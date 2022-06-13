@@ -30,4 +30,48 @@ public class OITCPlayer {
 		this._inGame = inGame;
 	}
 	
+
+	// DATABASE STAT METHODS
+	public void addStatKills() {
+		
+	}
+	public void addStatSwordKills() {
+		
+	}
+	public void addStatBowKills() {
+		
+	}
+	public void addStatFistKills() {
+		
+	}
+	public void addStatDeaths() {
+		
+	}
+	public void addStatGamesPlayed() {
+		
+	}
+	public void addStatGamesWon() {
+		
+	}
+	public void addStatGamesLost() {
+		
+	}
+	public void addStatArrowsShot() {
+		
+	}
+	public void addStatArrowsMissed() {
+		
+	}
+	public void addStatArrowsHit() {
+		
+	}
+	public void addStatArrowsHitHeadshot() {
+		
+	}
+	public void addStatAssists() {
+		
+	}
+
+	
 }
+

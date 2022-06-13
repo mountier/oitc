@@ -2,6 +2,8 @@ package world.oitc.gameplay;
 
 import org.bukkit.plugin.Plugin;
 
+import world.oitc.gameplay.GameTypeManager.GameType;
+
 public class GameRoom {
 	/*
 	 * Game Room class will manage game states, players, worlds, spawns, etc.
@@ -19,8 +21,10 @@ public class GameRoom {
 	private final GamePlayerManager _playerManager;
 	private final SignManager _signManager;
 	private final int _roomId;
-	
+
 	public GameState _gameState = GameState.LOBBY;
+	public boolean _ranked;
+	public GameType _gameType;
 
 	public GameRoom(Plugin plugin, int roomId) {
 		this._plugin = plugin;
@@ -33,7 +37,12 @@ public class GameRoom {
 	}
 	
 	public void loadGameRoomFile() {
-		
+		// THESE WILL BE LOADED IN FILE THE YML FILE
+		// load game type
+		// load sign location
+		_ranked = false;
+		_gameType = GameType.PUBLIC;
+		// load if room is ranked or not
 	}
 
 	public void setGameState(GameState gameState) {
@@ -89,6 +98,14 @@ public class GameRoom {
 	
 	public int getRoomId() {
 		return this._roomId;
+	}
+	
+	public boolean isRanked() {
+		return _ranked;
+	}
+	
+	public GameType getGameType() {
+		return _gameType;
 	}
 	
 }

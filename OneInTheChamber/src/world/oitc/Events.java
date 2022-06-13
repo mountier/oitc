@@ -24,8 +24,9 @@ public class Events implements Listener {
 		Player player = event.getPlayer();
 		OITCPlayer oitcPlayer = Main.getPlayerManager().getPlayer(player);
 		Main.getPlayerManager().removePlayer(oitcPlayer);
+	
 	}
-
+	
 	// arrow hit player event
 	// dont let players own arrow kill themself
 	@EventHandler
