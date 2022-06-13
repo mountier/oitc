@@ -17,7 +17,7 @@ public class Main extends JavaPlugin {
 	 * 
 	 * */
 
-	// will eventually need 12-15 of these.
+	// will eventually need 12-15 of these
 	private static GameRoom gameRoom1;
 	private static PlayerManager playerManager;
 	private static FileManager fileManager;
