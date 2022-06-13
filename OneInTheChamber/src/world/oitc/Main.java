@@ -16,11 +16,27 @@ public class Main extends JavaPlugin {
 	 * plugins/oitc/mapConfig.yml <-- will hold spawn locations, name of maps, etc.
 	 * 
 	 * */
+	
+	/*
+	 * COMMANDS
+	 * 
+	 * OITC 
+	 * 
+	 * OITCA 
+	 * 
+	 * join /join <roomId>
+	 * leave /leave
+	 * spectate /spectate <room>/<player>
+	 * votestart /votestart
+	 * stats /stats <player> <duel/ranked/gunfight>
+	 * 
+	 *  */
 
 	// will eventually need 12-15 of these
 	private static GameRoom gameRoom1;
 	private static PlayerManager playerManager;
 	private static FileManager fileManager;
+	public static Messages messages;
 
 	@Override
 	public void onEnable() {
@@ -28,8 +44,10 @@ public class Main extends JavaPlugin {
 		fileManager = new FileManager(this);
 		playerManager = new PlayerManager();
 		playerManager.createAllOnlinePlayers();
+		messages = new Messages();
 
 		this.getServer().getPluginManager().registerEvents(new Events(), this);
+		this.getCommand("oitca").setExecutor(new OITCCommand());
 		
 		// load all of the game rooms
 	}

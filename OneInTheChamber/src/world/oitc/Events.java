@@ -39,7 +39,7 @@ public class Events implements Listener {
 			return;
 		Player player = (Player) arrow.getShooter();
 		OITCPlayer oitcPlayer = Main.getPlayerManager().getPlayer(player);
-	
+
 		
 	}
 	

@@ -1,5 +1,15 @@
 name: OneInTheChamber
 version: 0.1
 description: One In The Chamber
-author: Mountier, LunarNova
+author: Mountier, LunarNova, Flenk
 main: world.oitc.Main
+
+commands:
+   oitca:
+      usage: /oitca <subCmd>
+      description: OITC Administration 
+      permission: oitc.admin
+permissions:
+   oitc.admin:
+      default: OP
+      description: OITC Administration
