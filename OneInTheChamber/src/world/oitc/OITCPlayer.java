@@ -18,6 +18,7 @@ public class OITCPlayer {
 		this._inGame = false;
 	}
 
+
 	public Player getPlayer() {
 		return _player;
 	}
