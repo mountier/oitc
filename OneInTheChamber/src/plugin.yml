@@ -9,6 +9,10 @@ commands:
       usage: /oitc <subCmd>
       description: OITC Administration 
       permission: oitc.admin
+   spectate:
+      usage: /spectate <user>
+      description: Spectate command
+#      permission: oitc.player
 permissions:
    oitc.admin:
       default: OP

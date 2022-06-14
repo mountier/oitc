@@ -1,9 +1,11 @@
-package world.oitc;
+package world.oitc.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import world.oitc.Main;
+import world.oitc.OITCPlayer;
 
 public class OITCCommand implements CommandExecutor {
 
@@ -31,5 +33,4 @@ public class OITCCommand implements CommandExecutor {
 		
 		return false;
 	}
-
 }

@@ -2,6 +2,8 @@ package world.oitc;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import world.oitc.commands.OITCCommand;
+import world.oitc.commands.SpectateCommand;
 import world.oitc.gameplay.GameRoom;
 import world.oitc.gameplay.managers.GameRoomManager;
 import world.oitc.util.FileManager;
@@ -28,6 +30,7 @@ public class Main extends JavaPlugin {
 
 		this.getServer().getPluginManager().registerEvents(new Events(), this);
 		this.getCommand("oitc").setExecutor(new OITCCommand());
+		this.getCommand("spectate").setExecutor(new SpectateCommand());
 		
 		gameRoomManager.loadGameRoomsFromFile();
 	}
