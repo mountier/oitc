@@ -1,4 +1,4 @@
-package world.oitc.gameplay;
+package world.oitc.gameplay.managers;
 
 public class GameTypeManager {
 

@@ -5,8 +5,8 @@ author: Mountier, LunarNova, Flenk
 main: world.oitc.Main
 
 commands:
-   oitca:
-      usage: /oitca <subCmd>
+   oitc:
+      usage: /oitc <subCmd>
       description: OITC Administration 
       permission: oitc.admin
 permissions:

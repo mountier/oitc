@@ -17,7 +17,7 @@ public class OITCCommand implements CommandExecutor {
 		OITCPlayer oitcPlayer = Main.getPlayerManager().getPlayer(player);
 		
 		if(args.length < 1) {
-			// /oitca 
+			// /oitc 
 			player.sendMessage(Main.messages.notEnoughArguments());
 			return true;
 		}

@@ -1,4 +1,6 @@
-package world.oitc.gameplay;
+package world.oitc.gameplay.managers;
+
+import world.oitc.gameplay.GameRoom;
 
 public class SignManager {
 	/*

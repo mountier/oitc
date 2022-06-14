@@ -2,17 +2,15 @@ package world.oitc.gameplay;
 
 import org.bukkit.plugin.Plugin;
 
-import world.oitc.gameplay.GameTypeManager.GameType;
+import world.oitc.gameplay.managers.GamePlayerManager;
+import world.oitc.gameplay.managers.MapManager;
+import world.oitc.gameplay.managers.SignManager;
+import world.oitc.gameplay.managers.GameTypeManager.GameType;
 
 public class GameRoom {
+
 	/*
 	 * Game Room class will manage game states, players, worlds, spawns, etc.
-	 * 
-	 * TODO:
-	 * Each Gameroom will have its own file with the location of any signs it's linked to, 
-	 * the type of gamemode (duel, ranked, etc), any any other info that will be specific to gamerooms.
-	 * 
-	 * The signs should be loaded from the gamerooms file when the plugin is loaded and immediately start updating.
 	 * 
 	 */
 
@@ -26,29 +24,20 @@ public class GameRoom {
 	public boolean _ranked;
 	public GameType _gameType;
 
-	public GameRoom(Plugin plugin, int roomId) {
+	public GameRoom(Plugin plugin, int roomId, boolean isRanked, GameType type) {
 		this._plugin = plugin;
 		this._mapManager = new MapManager(this);
 		this._playerManager = new GamePlayerManager(this);
 		this._signManager = new SignManager(this);
 		this._roomId = roomId;
-		
-		loadGameRoomFile();
 	}
-	
-	public void loadGameRoomFile() {
-		// THESE WILL BE LOADED IN FILE THE YML FILE
-		// load game type
-		// load sign location
-		_ranked = false;
-		_gameType = GameType.PUBLIC;
-		// load if room is ranked or not
-	}
+
 
 	public void setGameState(GameState gameState) {
 		// Don't switch state to current state (prevents double-starting)
-		if(getGameState() == gameState) return;
-		
+		if (getGameState() == gameState)
+			return;
+
 		this._gameState = gameState;
 		switch (gameState) {
 		case LOBBY:
@@ -79,33 +68,33 @@ public class GameRoom {
 	public Plugin getPlugin() {
 		return this._plugin;
 	}
-	
+
 	public MapManager getMapManager() {
 		return this._mapManager;
 	}
-	
+
 	public GamePlayerManager getPlayerManager() {
 		return this._playerManager;
 	}
-	
+
 	public SignManager getSignManager() {
 		return this._signManager;
 	}
-	
+
 	public GameState getGameState() {
 		return this._gameState;
 	}
-	
+
 	public int getRoomId() {
 		return this._roomId;
 	}
-	
+
 	public boolean isRanked() {
 		return _ranked;
 	}
-	
+
 	public GameType getGameType() {
 		return _gameType;
 	}
-	
+
 }
