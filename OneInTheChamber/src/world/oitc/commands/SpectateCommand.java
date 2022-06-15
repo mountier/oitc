@@ -25,6 +25,7 @@ public class SpectateCommand implements CommandExecutor {
         if (args.length < 2) {
             player.setGameMode(GameMode.SPECTATOR);
             //Set location to user specified
+            return true;
         }
         return false;
     }

@@ -1,11 +1,13 @@
 package world.oitc.gameplay;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
+import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 
-import world.oitc.gameplay.managers.GamePlayerManager;
-import world.oitc.gameplay.managers.MapManager;
-import world.oitc.gameplay.managers.SignManager;
 import world.oitc.gameplay.managers.GameTypeManager.GameType;
+import world.oitc.gameplay.managers.MapManager;
 
 public class GameRoom {
 
@@ -16,22 +18,27 @@ public class GameRoom {
 
 	private final Plugin _plugin;
 	private final MapManager _mapManager;
-	private final GamePlayerManager _playerManager;
-	private final SignManager _signManager;
 	private final int _roomId;
 
-	public GameState _gameState = GameState.LOBBY;
-	public boolean _ranked;
 	public GameType _gameType;
+	public GameState _gameState;
+	public boolean _ranked;
+	public Location _sign;
+
+	// We don't want to make an arraylist with the actual OITCPlayer object so
+	// instead we'll store their UUID and use the HashMap provided by PlayerManager
+	// to get the OITCPlayer object.
+	public ArrayList<UUID> players;
 
 	public GameRoom(Plugin plugin, int roomId, boolean isRanked, GameType type) {
 		this._plugin = plugin;
 		this._mapManager = new MapManager(this);
-		this._playerManager = new GamePlayerManager(this);
-		this._signManager = new SignManager(this);
 		this._roomId = roomId;
-	}
 
+		this._gameType = type;
+		this._gameState = GameState.LOBBY;
+		this._ranked = isRanked;
+	}
 
 	public void setGameState(GameState gameState) {
 		// Don't switch state to current state (prevents double-starting)
@@ -73,14 +80,6 @@ public class GameRoom {
 		return this._mapManager;
 	}
 
-	public GamePlayerManager getPlayerManager() {
-		return this._playerManager;
-	}
-
-	public SignManager getSignManager() {
-		return this._signManager;
-	}
-
 	public GameState getGameState() {
 		return this._gameState;
 	}
@@ -90,11 +89,19 @@ public class GameRoom {
 	}
 
 	public boolean isRanked() {
-		return _ranked;
+		return this._ranked;
 	}
 
 	public GameType getGameType() {
-		return _gameType;
+		return null;
+	}
+
+	public Location getSign() {
+		return this._sign;
+	}
+
+	public void setSign(Location location) {
+		this._sign = location;
 	}
 
 }
