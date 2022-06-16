@@ -3,33 +3,33 @@ package world.oitc.gameplay.gametypes;
 public class Duel implements GameType {
 
 	@Override
-	public void getMaxPlayers() {
-		// TODO Auto-generated method stub
-		
+	public int getMaxPlayers() {
+		return 2;
 	}
 
 	@Override
-	public void getMinStartingPlayers() {
-		// TODO Auto-generated method stub
-		
+	public int getMinStartingPlayers() {
+		return 2;
 	}
 
 	@Override
-	public void getTimeLimitInMinutes() {
-		// TODO Auto-generated method stub
-		
+	public int getTimeLimitInMinutes() {
+		return 30;
 	}
 
 	@Override
-	public void getEarlyQuitTimeSeconds() {
-		// TODO Auto-generated method stub
-		
+	public int getEarlyQuitTimeSeconds() {
+		return 5;
 	}
 
 	@Override
-	public void getAbandonMatchKillsLimit() {
-		// TODO Auto-generated method stub
-		
+	public int getAbandonMatchKillsLimit() {
+		return 0;
+	}
+
+	@Override
+	public String getSignName() {
+		return "Duel";
 	}
 
 }

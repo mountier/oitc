@@ -6,6 +6,7 @@ import world.oitc.commands.OITCCommand;
 import world.oitc.commands.SpectateCommand;
 import world.oitc.gameplay.GameRoom;
 import world.oitc.gameplay.managers.GameRoomManager;
+import world.oitc.gameplay.managers.MapManager;
 import world.oitc.gameplay.managers.SignManager;
 import world.oitc.util.FileManager;
 import world.oitc.util.PlayerManager;
@@ -16,6 +17,7 @@ public class Main extends JavaPlugin {
 
 	private static GameRoomManager gameRoomManager;
 	private static SignManager signManager;
+	private static MapManager mapManager;
 	private static PlayerManager playerManager;
 	private static FileManager fileManager;
 	private static WarpManager warpManager;
@@ -25,6 +27,7 @@ public class Main extends JavaPlugin {
 	public void onEnable() {
 		gameRoomManager = new GameRoomManager(this);
 		signManager = new SignManager(this);
+		mapManager = new MapManager();
 		fileManager = new FileManager(this);
 		playerManager = new PlayerManager();
 		warpManager = new WarpManager();
@@ -37,6 +40,7 @@ public class Main extends JavaPlugin {
 		
 		gameRoomManager.loadGameRoomsFromFile();
 		signManager.startSignAnimations();
+		mapManager.loadWorlds();
 	}
 
 	@Override
@@ -54,6 +58,10 @@ public class Main extends JavaPlugin {
 		return playerManager;
 	}
 
+	public static MapManager getMapManager() {
+		return mapManager;
+	}
+	
 	public static GameRoomManager getGameRoomManager() {
 		return gameRoomManager;
 	}

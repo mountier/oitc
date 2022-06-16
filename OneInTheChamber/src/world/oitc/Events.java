@@ -3,7 +3,6 @@ package world.oitc;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.Sign;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -101,8 +100,6 @@ public class Events implements Listener {
 		Material type = block.getType();
 
 		if (type.equals(Material.SIGN) || type.equals(Material.WALL_SIGN)) {
-			Sign sign = (Sign) block.getState();
-
 			for (GameRoom room : Main.getGameRoomManager().getGameRooms().values()) {
 				if (room.getSign() == null)
 					return;

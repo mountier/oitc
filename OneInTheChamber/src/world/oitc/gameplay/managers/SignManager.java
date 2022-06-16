@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.block.Sign;
 import org.bukkit.plugin.Plugin;
 
+import net.md_5.bungee.api.ChatColor;
 import world.oitc.Main;
 import world.oitc.gameplay.GameRoom;
 
@@ -25,21 +26,22 @@ public class SignManager {
 		Location signLoc = room.getSign();
 		Sign sign = (Sign) signLoc.getBlock().getState();
 
-		String line0 = sign.getLine(0);
-		String line1 = sign.getLine(1);
 		String line2 = sign.getLine(2);
-		String line3 = sign.getLine(3);
+		String rankedLine = ChatColor.RED + "Unranked";
 
-		sign.setLine(0, "");
-		sign.setLine(1, "");
-		sign.setLine(2, getAnimationLine(line2));
-		sign.setLine(3, "");
+		if (room.isRanked())
+			rankedLine = ChatColor.GREEN + "Ranked";
+
+		sign.setLine(0, ChatColor.BOLD + "[" + room.getGameType().getSignName() + "]");
+		sign.setLine(1, rankedLine);
+		sign.setLine(2, ChatColor.DARK_BLUE + "" + ChatColor.BOLD + getAnimationLine(line2));
+		sign.setLine(3, room.getPlayers().size() + "/" + room.getGameType().getMaxPlayers());
 
 		sign.update(true);
 	}
 
 	public String getAnimationLine(String currentLine) {
-		switch (currentLine) {
+		switch (ChatColor.stripColor(currentLine)) {
 		case ">>> <<<":
 			return ">> <<";
 		case ">> <<":

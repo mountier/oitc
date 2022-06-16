@@ -8,7 +8,8 @@ import org.bukkit.plugin.Plugin;
 
 import world.oitc.Main;
 import world.oitc.gameplay.GameRoom;
-import world.oitc.gameplay.managers.GameTypeManager.GameType;
+import world.oitc.gameplay.gametypes.Duel;
+import world.oitc.gameplay.gametypes.Standard;
 import world.oitc.util.FileManager;
 
 public class GameRoomManager {
@@ -19,8 +20,12 @@ public class GameRoomManager {
 
 	public GameRoomManager(Plugin plugin) {
 		_gameRooms = new HashMap<Integer, GameRoom>();
-		GameRoom gameRoom1 = new GameRoom(_plugin, 1, false, GameType.DUEL);
+	
+		GameRoom gameRoom1 = new GameRoom(_plugin, 1, false, new Duel());
 		_gameRooms.put(1, gameRoom1);
+		
+		GameRoom gameRoom2 = new GameRoom(_plugin, 2, true, new Standard());
+		_gameRooms.put(2, gameRoom2);
 	}
 
 	public void loadGameRoomsFromFile() {
